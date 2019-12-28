@@ -19,6 +19,11 @@ import pickle
 
 
 def load_data(database_filepath):
+    '''
+    input data base path
+    
+    output features, target and data frame
+    '''
     # load data from database
     engine = create_engine('sqlite:///'+database_filepath)
     df = pd.read_sql_table(database_filepath[:-3], engine )
@@ -28,6 +33,11 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    '''
+    input full messages 
+    
+    output tokens as important words in the messages 
+    '''
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -40,6 +50,9 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    output pipline model 
+    '''
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -49,14 +62,21 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    output accuracy of the model on the test set 
+    '''
     acc = []
     for i1,i2 in zip(np.array(Y_test), model.predict(X_test)):
         acc.append(accuracy_score(i1 , i2))
-    np.mean(acc)
-    pass
+    return np.mean(acc)
 
 
 def save_model(model, model_filepath):
+    '''
+    input model and model path 
+    
+    save model in path given 
+    '''
     # save the model to disk
     filename = model_filepath
     pickle.dump(model, open(filename, 'wb'))
