@@ -33,11 +33,11 @@ You will want to install anaconda 3 latest version depend on your operating syst
 
 ## ScreenShots from web app
 
-![web app user input](img/web app user input.png)
+![web app user input](https://github.com/IbrahimYahyaHakami/disaster_response_pipeline/blob/master/img/web%20app%20user%20input.PNG)
 
 This show web interface where user can input message and click classify for the model to output if the message reletive to any kind of emergency.
 
-![The count of different emergency type](img/The count of different emergency type.png)
+![The count of different emergency type](https://github.com/IbrahimYahyaHakami/disaster_response_pipeline/blob/master/img/The%20count%20of%20different%20emergency%20type.PNG)
 
 Some visualization and overview of the training data set.
 
