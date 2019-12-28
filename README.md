@@ -1,6 +1,7 @@
 # Disaster Response Pipeline Project
 
 Building web interface which can take on an emergency message as input and classify to appropriate type for the emergency response team to plan to counter it accordingly.
+
 ## Getting Started
 
 We will be using jupyter notebook in this project so we will need to Install anaconda 3 which will automatically install jupyter notebook , which is the main platform we will be using for this project.
@@ -16,7 +17,6 @@ You will want to install anaconda 3 latest version depend on your operating syst
 ## Built With
 
 * [Jupyter notebook](https://docs.anaconda.com/anaconda/install/hashes/win-3-64/) - platform used
-* [stackoverflow](https://insights.stackoverflow.com/survey) - data set source
 
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
@@ -29,7 +29,17 @@ You will want to install anaconda 3 latest version depend on your operating syst
 2. Run the following command in the app's directory to run your web app.
     `python run.py`
 
-3. Go to http://0.0.0.0:3001/
+3. Go to http://localhost:3001/
+
+## ScreenShots from web app
+
+![web app user input](img/web app user input.png)
+
+This show web interface where user can input message and click classify for the model to output if the message reletive to any kind of emergency.
+
+![The count of different emergency type](img/The count of different emergency type.png)
+
+Some visualization and overview of the training data set.
 
 ## Authors
 
