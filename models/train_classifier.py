@@ -15,6 +15,7 @@ import nltk
 nltk.download('punkt')
 nltk.download('wordnet')
 import pickle
+from sklearn.model_selection import GridSearchCV
 
 
 
@@ -58,7 +59,14 @@ def build_model():
         ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
-    return pipeline
+    
+    parameters = {
+    'clf__estimator__n_estimators': [10, 20],
+    'clf__estimator__max_depth':[None, 3]
+    }
+
+    cv = GridSearchCV(pipeline, param_grid=parameters , verbose=True , n_jobs= -1 ,cv = 3 )
+    return cv
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
