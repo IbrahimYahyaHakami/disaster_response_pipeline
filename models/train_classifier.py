@@ -71,12 +71,17 @@ def build_model():
 
 def evaluate_model(model, X_test, Y_test, category_names):
     '''
-    output accuracy of the model on the test set 
+    input model, X_test, Y_test 
+    
+    output tokens as important words in the messages 
     '''
-    acc = []
-    for i1,i2 in zip(np.array(Y_test), model.predict(X_test)):
-        acc.append(accuracy_score(i1 , i2))
-    return np.mean(acc)
+    y_test_df = pd.DataFrame(np.array(Y_test), columns=Y_test.columns)
+    predict_test_df = pd.DataFrame(model.predict(X_test), columns=Y_test.columns)
+    
+    for i in Y_test.columns:
+        print(f'classification_report for {i}:')
+        print(classification_report(y_test_df[i] ,predict_test_df[i] ))
+    pass
 
 
 def save_model(model, model_filepath):
