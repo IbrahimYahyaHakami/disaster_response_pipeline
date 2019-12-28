@@ -10,6 +10,11 @@ from nltk.stem import WordNetLemmatizer
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+    input messages and categories datasets file paths
+    
+    output merged data frame 
+    '''
     # load messages dataset
     messages = pd.read_csv(messages_filepath)
     # load categories dataset
@@ -20,6 +25,11 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    '''
+    input messy data frame
+    
+    output clean data frame 
+    '''
     # create a dataframe of the 36 individual category columns
     categories = df.categories.str.split(';', expand=True)
     # select the first row of the categories dataframe
@@ -47,6 +57,10 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    '''
+    input cleaned data frame and path to be saved to
+
+    '''
     engine = create_engine('sqlite:///'+database_filename)
     df.to_sql(database_filename[:-3], engine, index=False )
     pass  
